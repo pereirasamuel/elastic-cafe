@@ -24,14 +24,14 @@ app.config['ES_PWD'] = os.getenv('ES_PWD')
 app.config['ES_IP'] = os.getenv('ES_IP')
 
 es = Elasticsearch(
-    "https://${ES_IP}:9200",
+    "https://{0}:9200".format(ES_IP),
     basic_auth=("sysadmin", ES_PWD),
     verify_certs=False
 )
 
 app.config['ELASTIC_APM'] = {
   'SERVICE_NAME': 'flaskApp',
-  'SERVER_URL': 'http://${ES_IP}:8200',
+  'SERVER_URL': 'http://{0}:8200'.format(ES_IP),
   'ENVIRONMENT': 'production',
 }
 
