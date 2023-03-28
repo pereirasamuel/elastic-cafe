@@ -15,17 +15,19 @@ from pygments.formatters import HtmlFormatter
 
 load_dotenv()
 
-ES_PWD = os.getenv("ES_PWD") 
+app = Flask(__name__)
 
+ES_PWD = os.getenv("ES_PWD") 
 ES_IP = os.getenv("ES_IP")
+
+app.config['ES_PWD'] = os.getenv('ES_PWD')
+app.config['ES_IP'] = os.getenv('ES_IP')
 
 es = Elasticsearch(
     "https://${ES_IP}:9200",
     basic_auth=("sysadmin", ES_PWD),
     verify_certs=False
 )
-
-app = Flask(__name__)
 
 app.config['ELASTIC_APM'] = {
   'SERVICE_NAME': 'flaskApp',
