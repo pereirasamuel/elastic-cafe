@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response, render_template
 from elasticsearch import Elasticsearch
 import os 
 from dotenv import load_dotenv
@@ -42,18 +42,11 @@ apm = ElasticAPM(app)
 
 @app.route('/', methods=['GET'])
 def home():
-    readme_file = open("index.html", "r")
-    md_template_string = markdown.markdown(
-        readme_file.read(), extensions=["fenced_code", "codehilite"]
-    )
-    
-    formatter = HtmlFormatter(style="emacs",full=True,cssclass="codehilite")
-    css_string = formatter.get_style_defs()
-    md_css_string = "<style>" + css_string + "</style>"
-    
-    md_template = md_css_string + md_template_string
-    return md_template
+    return render_template('index.html')
 
+@app.route('/api', methods=['GET'])
+def api():
+    return render_template('api.html')
 
 @app.route('/coffee/all', methods=['GET'])
 def index():
