@@ -8,7 +8,7 @@ pipeline{
             }
             steps{
                 withSonarQubeEnv('sonarqube') {
-                    sh "${scanner}/bin/sonar-scanner -Dsonar.projectKey=4coffee-app -Dsonar.sources=${WORKSPACE}/ -Dsonar.projectVersion=${BUILD_NUMBER}"
+                    sh "${scanner}/bin/sonar-scanner -Dsonar.projectKey=elasticcafe-app -Dsonar.sources=${WORKSPACE}/ -Dsonar.projectVersion=${BUILD_NUMBER}"
                 }
                 waitForQualityGate abortPipeline: true
             }

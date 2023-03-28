@@ -1,7 +1,7 @@
-## Bem vindo a cafeteria _4coffee_
+## Bem vindo a cafeteria _elasticcafe_
 
 
-![4coffee](https://media.giphy.com/media/ROyijmazFKRc4/giphy.gif)
+![elasticcafe](https://media.giphy.com/media/ROyijmazFKRc4/giphy.gif)
 
 **Sou uma api construída em Flask!**
 

@@ -42,7 +42,7 @@ apm = ElasticAPM(app)
 
 @app.route('/', methods=['GET'])
 def home():
-    readme_file = open("index.md", "r")
+    readme_file = open("index.html", "r")
     md_template_string = markdown.markdown(
         readme_file.read(), extensions=["fenced_code", "codehilite"]
     )
@@ -59,7 +59,7 @@ def home():
 def index():
     coffees = db.coffee.find()
     results = es.search(
-        index='4coffee-app',
+        index='elasticcafe-app',
         query={"match_all":{}},
         filter_path=["hits.hits._source.coffee","hits.hits._source.price","hits.hits._source.sugar","hits.hits._source.customer"]
         )
@@ -85,7 +85,7 @@ def add_coffee():
         'timestamp': datetime.now()
     }
     
-    response = es.index(index='4coffee-app', document=doc)
+    response = es.index(index='elasticcafe-app', document=doc)
     db.coffee.insert_one(doc)
 
     return jsonify(response['result']),201
@@ -102,7 +102,7 @@ def search_customer(customer):
     }
 
     res = es.search(
-            index="4coffee-app", 
+            index="elasticcafe-app", 
             body=body,
             filter_path=["hits.hits._source.coffee","hits.hits._source.price","hits.hits._source.sugar","hits.hits._source.customer"]
             )
@@ -123,7 +123,7 @@ def search_coffee(coffee):
     }
 
     res = es.search(
-            index="4coffee-app", 
+            index="elasticcafe-app", 
             body=body, 
             filter_path=["hits.hits._source.coffee","hits.hits._source.price","hits.hits._source.sugar","hits.hits._source.customer"]
             )

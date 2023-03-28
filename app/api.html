@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElasticCafe</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    /* Estilos personalizados aqui */
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="img/elasticcafe-logo.png" alt="Logo da ElasticCafe" style="width: 100px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre nós</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contato</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="api.html">API</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="container mt-4">
+    <h2>API ElasticCafe</h2>
+    <p>A ElasticCafe possui uma API que permite aos desenvolvedores gerenciar pedidos de café de seus clientes. Abaixo, estão listados os principais endpoints da API:</p>
+    <h3>Adicionar um pedido</h3>
+    <p>Para adicionar um pedido, faça uma solicitação HTTP POST para o seguinte endpoint:</p>
+    <pre>POST /add_coffee</pre>
+    <p>O corpo da solicitação deve conter os seguintes campos no formato JSON:</p>
+    <pre>{
+	"coffee": "espresso",
+	"price": 11.00,
+	"sugar": false,
+	"customer": "Thay"
+}</pre>
+    <p>O campo <code>coffee</code> representa o tipo de café que o cliente deseja, o campo <code>price</code> representa o preço do café, o campo <code>sugar</code> indica se o café deve conter açúcar ou não, e o campo <code>customer</code> representa o nome do cliente.</p>
+    <h3>Consultar todos os pedidos</h3>
+    <p>Para consultar todos os pedidos, faça uma solicitação HTTP GET para o seguinte endpoint:</p>
+    <pre>GET /coffee/all</pre>
+    <h3>Consultar pedidos de um cliente</h3>
+    <p>Para consultar os pedidos de um cliente, faça uma solicitação HTTP GET para o seguinte endpoint, substituindo <code>&lt;customer&gt;</code> pelo nome do cliente desejado:</p>
+    <pre>GET /search_customer/&lt;customer&gt;</pre>
+    <h3>
